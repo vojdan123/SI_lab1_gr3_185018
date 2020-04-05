@@ -60,3 +60,27 @@ class Item {
             return 0;
 	}
 }
+class Receipt
+{
+    List<Item> items;
+
+    public Receipt() {
+        this.items = new ArrayList<>();
+    }
+    public void addItem(Item item)
+    {
+        this.items.add(item);
+    }
+    public boolean deleteItem(Item item)
+    {
+       return this.items.remove(item);
+    }
+    public double vkupenIznosNaSmetki()
+    {
+        return this.items.stream().mapToDouble(item -> item.price).sum();
+    }
+    public double vkupenPovratNaSmetki()
+    {
+        return this.items.stream().mapToDouble(Item::taxReturn).sum();
+    }
+}
